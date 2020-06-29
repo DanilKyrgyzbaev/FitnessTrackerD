@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,6 +101,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Button reset;
     private Button stop;
     private Button save;
+    ImageButton myLocationButton;
     double myDistance = 0;
     private Realm mRealm;
     private Chronometer chronometer;
@@ -138,12 +140,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         reset = findViewById(R.id.reset);
         stop = findViewById(R.id.stop);
         save = findViewById(R.id.save);
+        myLocationButton = findViewById ( R.id.myLocationButton );
         chronometer = findViewById(R.id.chronometer);
         save.setEnabled(false);
         start.setOnClickListener(this);
         stop.setOnClickListener(this);
         reset.setOnClickListener(this);
         save.setOnClickListener(this);
+
+        myLocationButton.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                getDeviceLocation ();
+            }
+        } );
 
     }
 
