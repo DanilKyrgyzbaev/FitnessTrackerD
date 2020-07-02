@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.ComponentName;
@@ -18,7 +17,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,9 +59,9 @@ import com.mad_devs.fitnesstrackerd.R;
 import com.mad_devs.fitnesstrackerd.googleMap.data.DataRoom;
 import com.mad_devs.fitnesstrackerd.googleMap.history.ResultActivity;
 import com.mad_devs.fitnesstrackerd.googleMap.service.BackgroundLocationUpdateService;
+import com.mad_devs.fitnesstrackerd.miBandConection.DeviceScanActivity;
 import com.mad_devs.fitnesstrackerd.uttils.LocationUpdateService;
 import com.mad_devs.fitnesstrackerd.uttils.PermissionUtils;
-import com.mad_devs.fitnesstrackerd.view.MainActivity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -207,7 +205,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 record = false;
                 break;
             case R.id.save:
-                App.dataRoomDao.insert(new DataRoom(0, myDistance, System.currentTimeMillis(),chronometer.getText().toString(), ""));
+                App.dataRoomDao.insert(new DataRoom(0, myDistance, System.currentTimeMillis(),chronometer.getText().toString(), "85"));
                 save.setEnabled(true);
                 start.setText("start");
                 Toast.makeText(this, "Save results ", Toast.LENGTH_LONG).show();
@@ -281,7 +279,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, DeviceScanActivity.class);
             startActivity(intent);
             return true;
         }

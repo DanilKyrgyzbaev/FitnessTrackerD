@@ -1,70 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/main_content"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:background="@drawable/bacground_them"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mad_devs.fitnesstrackerd.view.MainActivity">
+    android:padding="20dp"
+    tools:context=".miBandConection.MainActivity">
 
-
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <EditText
+            android:id="@+id/txtPhysicalAddress"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Physical Address" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <Button
+            android:id="@+id/btnStartConnecting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/btn_outline"
+            android:text="Start Connecting" />
 
-    <com.mad_devs.fitnesstrackerd.bluetooth.view.RecyclerViewProgressEmptySupport
-        android:id="@+id/list"
-        android:name="co.aurasphere.bluepair.DeviceFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="co.aurasphere.bluepair.DeviceFragment"
-        tools:listitem="@layout/list_device_item" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/empty_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/empty_list_message"
-        android:layout_margin="16dp"
-        android:layout_gravity="center_vertical"
-        android:textAlignment="center"
-        tools:ignore="RtlCompat" />
+        android:orientation="vertical"
+        android:paddingTop="20dp">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_horizontal"
-        android:indeterminate="true"
-        android:visibility="gone" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="State:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:background="@drawable/ic_bluetooth_white_24"/>
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/btnGetBatteryInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.50dp"
+            android:background="@drawable/btn_outline"
+            android:layout_weight="0.3"
+            android:text="Battery Info" />
+
+        <Button
+            android:id="@+id/btnGetHeartRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.50dp"
+            android:background="@drawable/btn_outline"
+            android:layout_weight="0.3"
+            android:text="Heart Rate" />
+
+        <Button
+            android:id="@+id/btnWalkingInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2.50dp"
+            android:background="@drawable/btn_outline"
+            android:layout_weight="0.3"
+            android:text="Walking Info" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp">
+
+        <Button
+            android:id="@+id/btnStartVibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_outline"
+            android:layout_weight="0.3"
+            android:text="Start Vibrate" />
+
+        <Button
+            android:id="@+id/btnStopVibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_outline"
+            android:layout_weight="0.3"
+            android:text="Stop Vibrate" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Byte Received:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtByte"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scrollHorizontally="false" />
+    </LinearLayout>
+
+</LinearLayout>
